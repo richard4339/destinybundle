@@ -10,7 +10,7 @@ class Configuration implements ConfigurationInterface
 
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder('destiny');
+        $treeBuilder = new TreeBuilder('destiny_client');
 
         $treeBuilder->getRootNode()
             ->children()
