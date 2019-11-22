@@ -36,6 +36,6 @@ in the `config/bundles.php` file of your project:
 
 return [
     // ...
-    <vendor>\richard4339\destinybundle\src\ClientBundle::class => ['all' => true],
+    Destiny\ClientBundle\ClientBundle::class => ['all' => true],
 ];
 ```
