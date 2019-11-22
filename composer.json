@@ -1,0 +1,33 @@
+{
+    "name": "richard4339/destinybundle",
+    "description": "A Destiny API Bundle for Symfony",
+    "type": "symfony-bundle",
+    "require": {
+        "php": ">=7.1",
+        "symfony/http-kernel": "^4.3 || ^5.0",
+        "symfony/serializer": "^4.3 || ^5.0",
+        "ext-json": "*",
+        "symfony/property-access": "^4.3 || ^5.0",
+        "symfony/property-info": "^4.3 || ^5.0",
+        "symfony/config": "^4.3 || ^5.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Richard",
+            "email": "richard@mozor.net"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Destiny\\ClientBundle\\": "src/"
+        }
+    },
+    "require-dev": {
+        "symfony/phpunit-bridge": "^4.3 || ^5.0"
+    },
+    "scripts": {
+        "test": "vendor/bin/simple-phpunit",
+        "test-ci": "vendor/bin/simple-phpunit --coverage-text --coverage-clover=build/coverage.xml"
+    }
+}
