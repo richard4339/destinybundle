@@ -21,6 +21,15 @@ class Configuration implements ConfigurationInterface
                         ->scalarNode('character_id')->end()
                     ->end()
                 ->end() // default
+                ->arrayNode('app')
+                    ->children()
+                        ->scalarNode('name')->end()
+                        ->scalarNode('version')->end()
+                        ->scalarNode('id_number')->end()
+                        ->scalarNode('url')->end()
+                        ->scalarNode('email')->end()
+                    ->end()
+                ->end() // app
             ->end()
         ;
 
