@@ -1,0 +1,10 @@
+parameters:
+  destiny.client_id: '%env(DESTINY_CLIENT_ID)%'
+  destiny.client_secret: '%env(DESTINY_CLIENT_SECRET)%'
+  destiny.api_key: '%env(DESTINY_API_KEY)%'
+  destiny.httpclient.forcenative: '%env(DESTINY_HTTPCLIENT_FORCE_NATIVE)%'
+
+services:
+  destiny_client.client:
+    class: Destiny\ClientBundle\DestinyClient
+    public: true

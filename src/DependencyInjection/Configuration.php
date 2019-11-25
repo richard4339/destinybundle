@@ -14,9 +14,6 @@ class Configuration implements ConfigurationInterface
 
         $treeBuilder->getRootNode()
             ->children()
-                ->scalarNode('client_id')->end()
-                ->scalarNode('client_secret')->end()
-                ->scalarNode('api_key')->end()
                 ->arrayNode('default')
                     ->children()
                         ->scalarNode('membership_type')->end()
@@ -24,11 +21,6 @@ class Configuration implements ConfigurationInterface
                         ->scalarNode('character_id')->end()
                     ->end()
                 ->end() // default
-                ->arrayNode('httpclient')
-                    ->children()
-                        ->scalarNode('force_native')->end()
-                    ->end()
-                ->end() // httpclient
             ->end()
         ;
 
