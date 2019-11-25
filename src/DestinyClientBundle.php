@@ -6,6 +6,6 @@ namespace Destiny\ClientBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class ClientBundle extends Bundle
+class DestinyClientBundle extends Bundle
 {
 }
