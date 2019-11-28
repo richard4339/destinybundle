@@ -2,9 +2,38 @@ parameters:
   destiny.client_id: '%env(DESTINY_CLIENT_ID)%'
   destiny.client_secret: '%env(DESTINY_CLIENT_SECRET)%'
   destiny.api_key: '%env(DESTINY_API_KEY)%'
-  destiny.httpclient.forcenative: '%env(DESTINY_HTTPCLIENT_FORCE_NATIVE)%'
+  destiny.httpclient.cachelocation: '%env(DESTINY_HTTPCLIENT_CACHELOCATION)%'
 
 services:
   destiny_client.client:
-    class: Destiny\ClientBundle\DestinyClient
-    public: true
+    class: Destiny\ClientBundle\Services\DestinyClient
+    lazy: true
+    arguments:
+      $clientID: '%destiny.client_id%'
+      $clientSecret: '%destiny.client_secret%'
+      $apiKey: '%destiny.api_key%'
+      $appName: '%destiny_client.app.name%'
+      $appVersion: '%destiny_client.app.version%'
+      $appIDNumber: '%destiny_client.app.id_number%'
+      $appURL: '%destiny_client.app.url%'
+      $appEmail: '%destiny_client.app.email%'
+      $serializer: '@serializer'
+
+  Destiny\ClientBundle\Services\DestinyClient: '@destiny_client.client'
+
+  destiny_client.cache_client:
+    class: Destiny\ClientBundle\Services\DestinyCachingClient
+    lazy: true
+    arguments:
+      $clientID: '%destiny.client_id%'
+      $clientSecret: '%destiny.client_secret%'
+      $apiKey: '%destiny.api_key%'
+      $appName: '%destiny_client.app.name%'
+      $appVersion: '%destiny_client.app.version%'
+      $appIDNumber: '%destiny_client.app.id_number%'
+      $appURL: '%destiny_client.app.url%'
+      $appEmail: '%destiny_client.app.email%'
+      $serializer: '@serializer'
+      $cacheLocation: '%destiny_client.httpclient.cache_location%'
+
+  Destiny\ClientBundle\Services\DestinyCachingClient: '@destiny_client.cache_client'

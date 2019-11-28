@@ -3,14 +3,16 @@
     "description": "A Destiny API Bundle for Symfony",
     "type": "symfony-bundle",
     "require": {
-        "php": ">=7.1",
-        "symfony/http-kernel": "^4.3 || ^5.0",
-        "symfony/serializer": "^4.3 || ^5.0",
+        "php": ">=7.2",
         "ext-json": "*",
-        "symfony/property-access": "^4.3 || ^5.0",
-        "symfony/property-info": "^4.3 || ^5.0",
-        "symfony/config": "^4.3 || ^5.0",
-        "symfony/dependency-injection": "^4.3 || ^5.0"
+        "symfony/config": "^4.4 || ^5.0",
+        "symfony/dependency-injection": "^4.4 || ^5.0",
+        "symfony/http-client": "^4.4 || ^5.0",
+        "symfony/http-kernel": "^4.4 || ^5.0",
+        "symfony/property-access": "^4.4 || ^5.0",
+        "symfony/property-info": "^4.4 || ^5.0",
+        "symfony/proxy-manager-bridge": "^4.4 || ^5.0",
+        "symfony/serializer": "^4.4 || ^5.0"
     },
     "license": "MIT",
     "authors": [
@@ -25,10 +27,21 @@
         }
     },
     "require-dev": {
-        "symfony/phpunit-bridge": "^4.3 || ^5.0"
+        "symfony/phpunit-bridge": "^4.4 || ^5.0"
     },
     "scripts": {
         "test": "vendor/bin/simple-phpunit",
         "test-ci": "vendor/bin/simple-phpunit --coverage-text --coverage-clover=build/coverage.xml"
+    },
+    "extra": {
+        "symfony": {
+            "id": "01DT9ZSKWPR596MKVW5EMYYNBE"
+        }
+    },
+    "config": {
+        "preferred-install": {
+            "*": "dist"
+        },
+        "sort-packages": true
     }
 }

@@ -30,6 +30,11 @@ class Configuration implements ConfigurationInterface
                         ->scalarNode('email')->end()
                     ->end()
                 ->end() // app
+                ->arrayNode('httpclient')
+                    ->children()
+                        ->scalarNode('cache_location')->end()
+                    ->end()
+                ->end() // httpclient
             ->end()
         ;
 
