@@ -10,7 +10,7 @@ use Destiny\ClientBundle\Objects\GlobalAlert;
  * Class BaseGlobalAlertsResponse
  * @package Destiny\ClientBundle\Objects\Responses
  */
-class BaseGlobalAlertsResponse
+class BaseGlobalAlertsResponse extends Response
 {
     /**
      * @var GlobalAlert[]|null

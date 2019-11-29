@@ -10,7 +10,7 @@ use Destiny\ClientBundle\Objects\GroupResponse;
  * Class BaseGroupResponse
  * @package Destiny\ClientBundle\Objects
  */
-class BaseGroupResponse
+class BaseGroupResponse extends Response
 {
     /**
      * @var GroupResponse|null

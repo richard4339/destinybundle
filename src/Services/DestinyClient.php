@@ -7,7 +7,9 @@ namespace Destiny\ClientBundle\Services;
 use Destiny\ClientBundle\Enums\GroupType;
 use Destiny\ClientBundle\Exceptions\ApiKeyException;
 use Destiny\ClientBundle\Objects\GlobalAlert;
+use Destiny\ClientBundle\Objects\GroupMember;
 use Destiny\ClientBundle\Objects\Responses\BaseGlobalAlertsResponse;
+use Destiny\ClientBundle\Objects\Responses\BaseGroupMemberResponse;
 use Destiny\ClientBundle\Objects\Responses\BaseGroupResponse;
 use Destiny\ClientBundle\Objects\GroupResponse;
 use Symfony\Component\HttpClient\HttpClient;
@@ -305,15 +307,53 @@ class DestinyClient
         return $baseResponse->getResponse();
     }
 
-    public function getClanMembers()
-    {
 
+    /**
+     * @param $clanID
+     * @param int $currentPage
+     *
+     * @return GroupMember[]|null
+     *
+     * @throws ApiKeyException
+     * @throws \Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface
+     * @throws \Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface
+     * @throws \Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface
+     * @throws \Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface
+     *
+     * @link https://bungie-net.github.io/multi/operation_get_GroupV2-GetMembersOfGroup.html#operation_get_GroupV2-GetMembersOfGroup
+     */
+    public function getClanMembers($clanID, $currentPage = 1)
+    {
+        $response = $this->request($this->buildRequestString('GroupV2', [$clanID, 'Members'],
+            ['currentPage' => $currentPage]));
+
+        /** @var BaseGroupMemberResponse $baseResponse */
+        $baseResponse = $this->serializer->deserialize($response->getContent(), BaseGroupMemberResponse::class, 'json');
+        return $baseResponse->getResponse()->getResults();
     }
 
-    public function getClanAdminsAndFounder()
+    /**
+     * @param $clanID
+     * @param int $currentPage
+     *
+     * @return GroupMember[]|null
+     *
+     * @throws ApiKeyException
+     * @throws \Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface
+     * @throws \Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface
+     * @throws \Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface
+     * @throws \Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface
+     *
+     * @link https://bungie-net.github.io/multi/operation_get_GroupV2-GetMembersOfGroup.html#operation_get_GroupV2-GetMembersOfGroup
+     */
+    public function getClanAdminsAndFounder($clanID, $currentPage = 1)
     {
+        $response = $this->request($this->buildRequestString('GroupV2', [$clanID, 'AdminsAndFounder'],
+            ['currentPage' => $currentPage]));
 
+        /** @var BaseGroupMemberResponse $baseResponse */
+        $baseResponse = $this->serializer->deserialize($response->getContent(), BaseGroupMemberResponse::class, 'json');
+        return $baseResponse->getResponse()->getResults();
     }
-
 
 }
